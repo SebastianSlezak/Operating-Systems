@@ -16,7 +16,7 @@ This repository hosts various projects focusing on different aspects of operatin
 
 ## Projects
 
-### 1. [Project Name 1](./project1)
+### 1. [Project 1 - Dynamic Process Tree Creation with Error Handling]([./project1](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%201%20-%20Dynamic%20Process%20Tree%20Creation%20with%20Error%20Handling))
    Description: Brief description of Project 1.
 
    - Feature 1
