@@ -6,31 +6,18 @@ Welcome to the Operating Systems Projects repository! This repository contains a
 
 1. [Introduction](#introduction)
 2. [Projects](#projects)
-3. [Getting Started](#getting-started)
-4. [Contributing](#contributing)
-5. [License](#license)
 
 ## Introduction
 
-This repository hosts various projects focusing on different aspects of operating systems development. Whether you are a beginner or an experienced developer, you can find projects of varying complexity to enhance your understanding of operating systems concepts and C programming.
+In this repository you will find various projects focused on showing how my knowledge of operating systems has evolved. Whether you are a beginner or an experienced programmer, you can find projects of varying degrees of complexity that will help you better understand the concepts of operating systems and C programming.
 
 ## Projects
 
 ### 1. [Project 1 - Dynamic Process Tree Creation with Error Handling]([./project1](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%201%20-%20Dynamic%20Process%20Tree%20Creation%20with%20Error%20Handling))
-   Description: Brief description of Project 1.
+   Description: This project includes analyzing descendant processes, drawing a family tree, running new programs in descendant processes, handling errors, and waiting for all descendant processes to finish.
 
    - Feature 1
    - Feature 2
    - ...
 
 Feel free to explore each project's directory for more details.
-
-## Getting Started
-
-To get started with a specific project, follow the instructions in its respective directory. Make sure you have the necessary tools and dependencies installed.
-
-```bash
-# Example commands to compile and run a project
-cd project
-gcc <project_name>
-./a.out
