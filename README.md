@@ -13,7 +13,7 @@ In this repository you will find various projects focused on showing how my know
 
 ## Projects
 
-### 1. [Project 1 - Dynamic Process Tree Creation with Error Handling]([./project1](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%201%20-%20Dynamic%20Process%20Tree%20Creation%20with%20Error%20Handling))
+### 1. [Project 1 - Dynamic Process Tree Creation with Error Handling](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%201%20-%20Dynamic%20Process%20Tree%20Creation%20with%20Error%20Handling)
    Description: This project includes analyzing descendant processes, drawing a family tree, running new programs in descendant processes, handling errors, and waiting for all descendant processes to finish.
 
    - Feature 1
