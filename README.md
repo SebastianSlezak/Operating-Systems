@@ -9,15 +9,15 @@ Welcome to the Operating Systems Projects repository! This repository contains a
 
 ## Introduction
 
-In this repository you will find various projects focused on showing how my knowledge of operating systems has evolved. Whether you are a beginner or an experienced programmer, you can find projects of varying degrees of complexity that will help you better understand the concepts of operating systems and C programming.
+In this repository you will find various projects focused on showing how my knowledge of the Linux operating system has evolved. Whether you are a beginner or an experienced programmer, you can find projects of varying complexity that will help you better understand the concepts of operating systems and C programming.
 
 ## Projects
 
 ### 1. [Project 1 - Dynamic Process Tree Creation with Error Handling](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%201%20-%20Dynamic%20Process%20Tree%20Creation%20with%20Error%20Handling)
    Description: This project includes analyzing descendant processes, drawing a family tree, running new programs in descendant processes, handling errors, and waiting for all descendant processes to finish.
 
-   - [Project 1 - Dynamic Process Tree Creation with Error Handling]([https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%201%20-%20Dynamic%20Process%20Tree%20Creation%20with%20Error%20Handling](https://github.com/SebastianSlezak/Operating-systems/blob/main/Project%201%20-%20Dynamic%20Process%20Tree%20Creation%20with%20Error%20Handling/program1_1.c)) - The program uses system functions (getpid(), getppid(), getuid(), getgid()) to obtain and display information about the current process, its parent, user ID (UID) and group ID (GID).
-   - Feature 2
-   - ...
+   - program1_1 - Displays process IDs: PID (Process ID), PPID (Parent Process ID), UID (User ID) and GID (Group ID).
+   - program1_2 - Creates three child processes using the fork() function, displays their PID, PPID, UID, GID, as well as the process tree before and after the creation of the child processes.
+   - program1_3 - Creates three child processes using the fork() function, which then execute another program (./program1_1) using the execl() function, and the parent process waits for each of the child processes to finish and displays their exit codes.
 
 Feel free to explore each project's directory for more details.
