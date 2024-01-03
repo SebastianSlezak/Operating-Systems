@@ -4,6 +4,12 @@
 #include <stdlib.h>
 
 int main() {
+
+    char cmd[20];
+
+    sprintf(cmd, "pstree -p %d", getpid());
+    system(cmd);
+
     for (int i = 0; i < 3; i++) {
         switch (fork()) {
             case -1:
@@ -21,5 +27,8 @@ int main() {
                 break;
         }
     }
+
+    system(cmd);
+
     return 0;
 }
