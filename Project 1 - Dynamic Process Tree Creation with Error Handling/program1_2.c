@@ -39,4 +39,3 @@ This is because when the fork function is called, a child process is created, wh
 When the function is called again, the child processes are created from the previous child processes as well as the parent processes.
 In addition, one more sh process is created, which is responsible for calling pstree.
 */
-
