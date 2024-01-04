@@ -20,4 +20,6 @@ In this repository you will find various projects focused on showing how my know
    - **program1_2** - Creates three child processes using the fork() function, displays their PID, PPID, UID, GID, as well as the process tree before and after the creation of the child processes.
    - **program1_3** - Creates three child processes using the fork() function, which then execute another program (./program1_1) using the execl() function, and the parent process waits for each of the child processes to finish and displays their exit codes.
 
+### 2. [Project 2 - Thread and Semaphore Synchronization](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%202%20-%20Thread%20and%20Semaphore%20Synchronization)
+
 Feel free to explore each project's directory for more details.
