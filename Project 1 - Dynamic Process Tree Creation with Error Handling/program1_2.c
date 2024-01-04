@@ -32,10 +32,3 @@ int main() {
 
     return 0;
 }
-
-/*
-During the execution of the program, 9 processes are created.
-This is because when the fork function is called, a child process is created, which is the same as the parent process.
-When the function is called again, the child processes are created from the previous child processes as well as the parent processes.
-In addition, one more sh process is created, which is responsible for calling pstree.
-*/
