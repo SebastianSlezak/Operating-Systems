@@ -20,14 +20,12 @@ int main() {
                 exit(1);
                 break;
             case 0:
-                /*Proces potomny*/
                 if (execl("./program1_1", "program1_1", NULL) == -1) {
                     perror("execl error");
                 }
                 exit(2);
                 break;
             default:
-                /*Proces macierzysty*/
                 printf("Action for the process parent.\n");
                 break;
         }
