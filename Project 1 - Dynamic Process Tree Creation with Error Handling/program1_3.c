@@ -45,11 +45,3 @@ int main() {
 
     return 0;
 }
-
-/*
-During the execution of the program, 7 processes are created.
-The program (program1_3) is the master process that runs the other processes.
-Then the sh processes are run, which is needed to run the pstree process.
-Then, using the execl() function, three times the descendant processes of the program (program1_1) are created.
-At the very end, the sh process, which is another child process of the program1_3 process that runs pstree.
-*/
