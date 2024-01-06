@@ -7,6 +7,7 @@ Welcome to the Operating Systems Projects repository! This repository contains a
 1. [Introduction](#introduction)
 2. [Projects](#projects)
    - [Project 1 - Dynamic Process Tree Creation with Error Handling](#project1)
+   - [Project 2 - Thread and Semaphore Synchronization](#project2)
 
 ## Introduction
 
@@ -34,6 +35,7 @@ In this repository you will find various projects focused on showing how my know
      #### Result of the program
      ![program1_3](https://github.com/SebastianSlezak/Operating-systems/assets/41953849/c51d87c6-bd04-468d-bbc9-9ce250471918)
 
+<a name="project2"></a>
 ### 2. [Project 2 - Thread and Semaphore Synchronization](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%202%20-%20Thread%20and%20Semaphore%20Synchronization)
    Description: The project uses threads to calculate the sum of elements in a two-dimensional array and synchronize three processes using semaphores, with each process displaying and storing specific information    and then terminating with the sleep(1) function, using the fork() and exec() functions.
 
