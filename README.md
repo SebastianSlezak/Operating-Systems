@@ -21,5 +21,12 @@ In this repository you will find various projects focused on showing how my know
    - **program1_3** - Creates three child processes using the fork() function, which then execute another program (./program1_1) using the execl() function, and the parent process waits for each of the child processes to finish and displays their exit codes.
 
 ### 2. [Project 2 - Thread and Semaphore Synchronization](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%202%20-%20Thread%20and%20Semaphore%20Synchronization)
+   Description: The project uses threads to calculate the sum of elements in a two-dimensional array and synchronize three processes using semaphores, with each process displaying and storing specific information    and then terminating with the sleep(1) function, using the fork() and exec() functions.
+
+   - **program2_1** - The program creates a two-dimensional array of random numbers and then uses two threads to calculate the sum of the elements in each row, after which it sums these partial totals and displays the results.
+   - **semaphore** - This program creates a semaphore, sets it, generates child processes using the fork() and exec() functions, waits for those processes to finish, and then deletes the semaphore while saving the results to the "wynik.txt" file.
+      - **program2_2** - It creates a semaphore, closes it, displays and saves the PID information for two sections, and then opens the semaphore and terminates the operation.
+      - **program2_3** - It creates a semaphore and then executes three sections of code (t21, t22, t23), each writing information to a file and manipulating the semaphore to control the order in which the sections are executed.
+      - **program2_4** - It creates a semaphore and then executes three sections of code (t31, t32, t33), each writing information to a file and manipulating the semaphore to control the order in which the sections are executed.
 
 Feel free to explore each project's directory for more details.
