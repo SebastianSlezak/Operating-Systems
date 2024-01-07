@@ -22,23 +22,91 @@ In this repository you will find various projects focused on showing how my know
    - **program1_1** - Displays process IDs: PID (Process ID), PPID (Parent Process ID), UID (User ID) and GID (Group ID).
      
      #### Result of the program
-     ```
-     PID: 1728792
-     PPID: 1728727
-     UID: 2423
-     GID: 2425
-     ```
+```
+PID: 1728792
+PPID: 1728727
+UID: 2423
+GID: 2425
+```
      
    - **program1_2** - Creates three child processes using the fork() function, displays their PID, PPID, UID, GID, as well as the process tree before and after the creation of the child processes.
      
      #### Result of the program
-     ![program1_2part1](https://github.com/SebastianSlezak/Operating-systems/assets/41953849/a32117c1-b015-41a6-897e-cc244e37c86f)
-     ![program1_2part2](https://github.com/SebastianSlezak/Operating-systems/assets/41953849/efe88b95-6f38-40e5-8c7f-7d1506fd11e4)
+```
+program1_2(1893273)---sh(1893274)---pstree(1893275)
+Action for the process parent.
+PID: 1893276
+PPID: 1893273
+UID: 2423
+GID: 2425
+Action for the process parent.
+Action for the process parent.
+Action for the process parent.
+Action for the process parent.
+PID: 1893278
+PID: 1893277
+PPID: 1893276
+UID: 2423
+PPID: 1893273
+GID: 2425
+UID: 2423
+GID: 2425
+PID: 1893280
+PPID: 1893276
+PID: 1893279
+UID: 2423
+GID: 2425
+PPID: 1893273
+UID: 2423
+GID: 2425
+Action for the process parent.
+Action for the process parent.
+PID: 1893283
+PPID: 1893278
+UID: 2423
+GID: 2425
+PID: 1893284
+PPID: 1893277
+UID: 2423
+GID: 2425
+program1_2(1893273)-+-program1_2(1893276)-+-program1_2(1893278)-+-program1_2(18+
+                   |                     |                     `-sh(1893288)--+
+                   |                     |-program1_2(1893280)---sh(1893285)--+
+                   |                     `-sh(1893282)---pstree(1893292)
+                   |-program1_2(1893277)-+-program1_2(1893284)---sh(1893290)--+
+                   |                     `-sh(1893287)---pstree(1893297)
+                   |-program1_2(1893279)---sh(1893286)---pstree(1893293)
+                   `-sh(1893281)---pstree(1893291)
+```
      
    - **program1_3** - Creates three child processes using the `fork()` function, which then execute another program `./program1_1` using the `execl()` function, and the parent process waits for each of the child                            processes to finish and displays their exit codes.
      
      #### Result of the program
-     ![program1_3](https://github.com/SebastianSlezak/Operating-systems/assets/41953849/c51d87c6-bd04-468d-bbc9-9ce250471918)
+```
+program1_3(1893374)---sh(1893375)---pstree(1893376)
+Action for the process parent.
+Action for the process parent.
+Action for the process parent.
+PID: 1893377
+PPID: 1893374
+UID: 2423
+GID: 2425
+PID: 1893378
+PPID: 1893374
+UID: 2423
+GID: 2425
+PID: 1893379
+PPID: 1893374
+UID: 2423
+GID: 2425
+program1_3(1893374)-+-program1_1(1893377)
+                   |-program1_1(1893378)
+                   |-program1_1(1893379)
+                   `-sh(1893380)---pstree(1893381)
+The process 1893377 ended with: 0
+The process 1893378 ended with: 0
+The process 1893379 ended with: 0
+```
 
 <a name="project2"></a>
 ### 2. [Project 2 - Thread and Semaphore Synchronization](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%202%20-%20Thread%20and%20Semaphore%20Synchronization)
@@ -47,7 +115,11 @@ In this repository you will find various projects focused on showing how my know
    - **program2_1** - The program creates a two-dimensional array of random numbers and then uses two threads to calculate the sum of the elements in each row, after which it sums these partial totals and                               displays the results.
 
      #### Result of the program
-     ![program2_1](https://github.com/SebastianSlezak/Operating-systems/assets/41953849/95b7a29b-a11e-4eae-8c52-2646c70092d7)
+```
+Sum of the elements of the first row: 45
+Sum of the elements of the second row: 36
+Total sum: 81
+```
 
    - **semaphore** - This program creates a semaphore, sets it, generates child processes using the `fork()` and `exec()` functions, waits for those processes to finish, and then deletes the semaphore while       
                      saving the results to the "wynik.txt" file.
@@ -56,7 +128,47 @@ In this repository you will find various projects focused on showing how my know
       - **program2_4** - It creates a semaphore and then executes three sections of code `(t31, t32, t33)`, each writing information to a file and manipulating the semaphore to control the order in which the                                 sections are executed.
 
       #### Result of the program
-      ![Semaphore Project](https://github.com/SebastianSlezak/Operating-systems/assets/41953849/c3ad148a-b98a-43a5-815f-b917afa17917)
+```
+[MAIN] The semaphore has been created: 1441844
+[MAIN] The semaphore has been set
+[P1] The semaphore has been created: 1441844
+[P2] The semaphore has been created: 1441844
+Section t21 with PID = 1893445
+[P2] Semaphore 0 has been opened
+[P3] The semaphore has been created: 1441844
+[P3] Semaphore 0 has been closed
+Section t31 with PID = 1893450
+Section t32 with PID = 1893450
+[P3] Semaphore 1 has been opened
+[P2] Semaphore 1 has been closed
+Section t22 with PID = 1893445
+[P2] Semaphore 2 has been opened
+[P1] Semaphore 2 has been closed
+Section t11 with PID = 1893444
+Section t12 with PID = 1893444
+[P1] Semaphore 3 has been opened
+[P2] Semaphore 3 has been closed
+Section t23 with PID = 1893445
+The process 1893444 ended with: 1
+[P2] Semaphore 4 has been opened
+[P3] Semaphore 4 has been closed
+Section t33 with PID = 1893450
+The process 1893445 ended with: 1
+The process 1893450 ended with: 1
+[MAIN] The semaphore has been removed
+```
+
+#### wynik.txt
+```
+Section t11 with PID = 1893444
+Section t12 with PID = 1893444
+Section t21 with PID = 1893445
+Section t22 with PID = 1893445
+Section t23 with PID = 1893445
+Section t31 with PID = 1893450
+Section t32 with PID = 1893450
+Section t33 with PID = 1893450
+```
 
 * * *
 Feel free to explore each project's directory for more details.
