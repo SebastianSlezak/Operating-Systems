@@ -15,9 +15,9 @@ void end(const char *errMsg) {
 
 void createNewSemaphore(key_t key) {
     if ((semaphore = semget(key, 5, 0666 | IPC_CREAT)) == -1) {
-        end("[P1] Error when creating a new semaphore\n");
+        end("[P2] Error when creating a new semaphore\n");
     } else {
-        printf("[P1] The semaphore has been created: %d\n", semaphore);
+        printf("[P2] The semaphore has been created: %d\n", semaphore);
     }
 }
 

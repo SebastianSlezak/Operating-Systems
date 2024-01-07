@@ -28,9 +28,9 @@ void semaphoreP(int x) {
     bufor_sem.sem_flg = SEM_UNDO;
 
     if ((semop(semaphore, &bufor_sem, 1)) == -1) {
-        end("[P2] Error when closing semaphore\n");
+        end("[P1] Error when closing semaphore\n");
     } else {
-        printf("[P2] Semaphore %d has been closed\n", x);
+        printf("[P1] Semaphore %d has been closed\n", x);
     }
 }
 

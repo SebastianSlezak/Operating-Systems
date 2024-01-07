@@ -41,9 +41,9 @@ void semaphoreV(int x) {
     bufor_sem.sem_flg = SEM_UNDO;
 
     if ((semop(semaphore, &bufor_sem, 1)) == -1) {
-        end("[P2] Error when opening semaphore\n");
+        end("[P3] Error when opening semaphore\n");
     }
-    printf("[P2] Semaphore %d has been opened\n", x);
+    printf("[P3] Semaphore %d has been opened\n", x);
 }
 
 int main() {
