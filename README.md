@@ -8,6 +8,7 @@ Welcome to the Operating Systems Projects repository! This repository contains a
 2. [Projects](#projects)
    - [Project 1 - Dynamic Process Tree Creation with Error Handling](#project1)
    - [Project 2 - Thread and Semaphore Synchronization](#project2)
+   - [Project 3 - Consumer Manufacturer](#project3)
 
 ## Introduction
 
@@ -168,6 +169,51 @@ Section t23 with PID = 1893445
 Section t31 with PID = 1893450
 Section t32 with PID = 1893450
 Section t33 with PID = 1893450
+```
+<a name="project3"></a>
+### 3. [Project 3 - Consumer Manufacturer]([https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%202%20-%20Thread%20and%20Semaphore%20Synchronization](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%203%20-%20Consumer%20Manufacturer))
+   Description: The classic Producer-Consumer problem is an IT synchronization problem in which two types of processes, the producer and the consumer, share a common resource - a buffer - for the units produced (and consumed), and the producer's task is to produce a product, place it in the buffer and start again, and the consumer's task is to retrieve the product from the buffer
+
+   - **mainp** - It implements the producer-consumer problem by creating producer and consumer processes that communicate using shared memory, semaphores and message queues.
+   - **kons** - The consumer program in the producer-consumer problem, using semaphores for synchronization and buffer handling.
+   - **prod** - program acts as a producer in the producer-consumer problem, using semaphores for synchronization and buffer handling.
+
+      #### Result of the program
+```
+blank message sent 0
+blank message sent 1
+blank message sent 2
+blank message sent 3
+blank message sent 4
+blank message sent 5
+blank message sent 6
+blank message sent 7
+blank message sent 8
+blank message sent 9
+PID=2219869 has been written to the buffer [PRODUCER]
+PID=2219871 has been written to the buffer [PRODUCER]
+PID=2219870 has been written to the buffer [PRODUCER]
+PID=2219873 has been written to the buffer [PRODUCER]
+PID=2219872 has been written to the buffer [PRODUCER]
+PID=2219874 has been written to the buffer [PRODUCER]
+PID=2219875 has been written to the buffer [PRODUCER]
+PID=2219876 has been written to the buffer [PRODUCER]
+PID=2219877 has been written to the buffer [PRODUCER]
+PID=2219878 has been written to the buffer [PRODUCER]
+PID=2219880 has been written to the buffer [PRODUCER]
+PID=2219879 has been written to the buffer [PRODUCER]
+Process 2219881 has gained access to the semaphore set [CONSUMER]
+Process 2219882 has gained access to the semaphore set [CONSUMER]
+Process 2219883 has gained access to the semaphore set [CONSUMER]
+Process 2219884 has gained access to the semaphore set [CONSUMER]
+Process 2219885 has gained access to the semaphore set [CONSUMER]
+Process 2219886 has gained access to the semaphore set [CONSUMER]
+Process 2219887 has gained access to the semaphore set [CONSUMER]
+Process 2219888 has gained access to the semaphore set [CONSUMER]
+Process 2219889 has gained access to the semaphore set [CONSUMER]
+Process 2219890 has gained access to the semaphore set [CONSUMER]
+Process 2219891 has gained access to the semaphore set [CONSUMER]
+Process 2219892 has gained access to the semaphore set [CONSUMER]
 ```
 
 * * *
