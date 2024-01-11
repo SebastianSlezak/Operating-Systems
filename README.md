@@ -22,7 +22,7 @@ In this repository you will find various projects focused on showing how my know
 
    - **program1_1** - Displays process IDs: PID (Process ID), PPID (Parent Process ID), UID (User ID) and GID (Group ID).
      
-     #### Result of the program
+#### Result of the program
 ```
 PID: 1728792
 PPID: 1728727
@@ -32,7 +32,7 @@ GID: 2425
      
    - **program1_2** - Creates three child processes using the fork() function, displays their PID, PPID, UID, GID, as well as the process tree before and after the creation of the child processes.
      
-     #### Result of the program
+#### Result of the program
 ```
 program1_2(1893273)---sh(1893274)---pstree(1893275)
 Action for the process parent.
@@ -82,7 +82,7 @@ program1_2(1893273)-+-program1_2(1893276)-+-program1_2(1893278)-+-program1_2(18+
      
    - **program1_3** - Creates three child processes using the `fork()` function, which then execute another program `./program1_1` using the `execl()` function, and the parent process waits for each of the child                            processes to finish and displays their exit codes.
      
-     #### Result of the program
+#### Result of the program
 ```
 program1_3(1893374)---sh(1893375)---pstree(1893376)
 Action for the process parent.
@@ -115,7 +115,7 @@ The process 1893379 ended with: 0
 
    - **program2_1** - The program creates a two-dimensional array of random numbers and then uses two threads to calculate the sum of the elements in each row, after which it sums these partial totals and                               displays the results.
 
-     #### Result of the program
+#### Result of the program
 ```
 Sum of the elements of the first row: 45
 Sum of the elements of the second row: 36
@@ -128,7 +128,7 @@ Total sum: 81
       - **program2_3** - It creates a semaphore and then executes three sections of code `(t21, t22, t23)`, each writing information to a file and manipulating the semaphore to control the order in which the                                 sections are executed.
       - **program2_4** - It creates a semaphore and then executes three sections of code `(t31, t32, t33)`, each writing information to a file and manipulating the semaphore to control the order in which the                                 sections are executed.
 
-      #### Result of the program
+#### Result of the program
 ```
 [MAIN] The semaphore has been created: 1441844
 [MAIN] The semaphore has been set
@@ -178,7 +178,7 @@ Section t33 with PID = 1893450
    - **kons** - The consumer program in the producer-consumer problem, using semaphores for synchronization and buffer handling.
    - **prod** - program acts as a producer in the producer-consumer problem, using semaphores for synchronization and buffer handling.
 
-      #### Result of the program
+#### Result of the program
 ```
 blank message sent 0
 blank message sent 1
