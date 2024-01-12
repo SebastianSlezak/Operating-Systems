@@ -54,6 +54,6 @@ int main(int argc, char *argv[])
         msgsnd(queueId, (struct msgbuf *)&mes, strlen(mes.mtext) + 1, 0); 
         mes.mtype = getpid();                                               
         msgrcv(queueId, (struct msgbuf *)&mes, MAX, mes.mtype, 0);
-        printf("C[%d]: Odebrano: \"%s\" zaadresowane do %ld\n", customerNumber, mes.mtext, mes.mtype);
+        printf("C[%d]: Retrieved: \"%s\" addressed to %ld\n", customerNumber, mes.mtext, mes.mtype);
     }
 }
