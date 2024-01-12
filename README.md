@@ -9,6 +9,7 @@ Welcome to the Operating Systems Projects repository! This repository contains a
    - [Project 1 - Dynamic Process Tree Creation with Error Handling](#project1)
    - [Project 2 - Thread and Semaphore Synchronization](#project2)
    - [Project 3 - Consumer Manufacturer](#project3)
+   - [Project 4 - Client Server](#project4)
 
 ## Introduction
 
@@ -171,8 +172,8 @@ Section t32 with PID = 1893450
 Section t33 with PID = 1893450
 ```
 <a name="project3"></a>
-### 3. [Project 3 - Consumer Manufacturer]([https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%202%20-%20Thread%20and%20Semaphore%20Synchronization](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%203%20-%20Consumer%20Manufacturer))
-   Description: The classic Producer-Consumer problem is an IT synchronization problem in which two types of processes, the producer and the consumer, share a common resource - a buffer - for the units produced (and consumed), and the producer's task is to produce a product, place it in the buffer and start again, and the consumer's task is to retrieve the product from the buffer
+### 3. [Project 3 - Consumer Manufacturer](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%203%20-%20Consumer%20Manufacturer))
+   Description: The classic Producer-Consumer problem is an IT synchronization problem in which two types of processes, the producer and the consumer, share a common resource - a buffer - for the units produced (and consumed), and the producer's task is to produce a product, place it in the buffer and start again, and the consumer's task is to retrieve the product from the buffer.
 
    - **mainp** - It implements the producer-consumer problem by creating producer and consumer processes that communicate using shared memory, semaphores and message queues.
    - **kons** - The consumer program in the producer-consumer problem, using semaphores for synchronization and buffer handling.
@@ -214,6 +215,32 @@ Process 2219889 has gained access to the semaphore set [CONSUMER]
 Process 2219890 has gained access to the semaphore set [CONSUMER]
 Process 2219891 has gained access to the semaphore set [CONSUMER]
 Process 2219892 has gained access to the semaphore set [CONSUMER]
+```
+
+<a name="project4"></a>
+### 4. [Project 4 - Client Server](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%204%20-%20Client%20Server)
+
+Description: A client-server program is a computer system architecture that allows the division of tasks, where the server provides services to clients who submit service requests to it.
+
+   - **client** - This code is responsible for communicating with the server using message queues in Unix, which sends messages to the server and receives responses.
+   - **server** - This code is a simple server program communicating with a client using Unix message queues, which receives messages from the client, converts them to uppercase and sends them back.
+
+#### Result of client
+```
+C[3582514]: Enter text to send:
+test message
+C[3582514]: Sending... "test message" -> SERVER
+C[3582514]: Retrieved: "TEST MESSAGE" addressed to 3582514
+C[3582514]: Enter text to send:
+```
+
+#### Result of server
+```
+^C terminates server
+S: I look forward to the message...
+S: Received from: 3582514~test message
+S: Sending... TEST MESSAGE -> 3582514
+S: I look forward to the message...
 ```
 
 * * *
