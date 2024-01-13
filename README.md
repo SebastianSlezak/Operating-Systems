@@ -35,50 +35,47 @@ GID: 2425
      
 #### Result of the program
 ```
-program1_2(1893273)---sh(1893274)---pstree(1893275)
+program1_2(58149)---sh(58150)---pstree(58151)
 Action for the process parent.
-PID: 1893276
-PPID: 1893273
+PID: 58152
+Action for the process parent.
+PPID: 58149
 UID: 2423
 GID: 2425
 Action for the process parent.
+PID: 58153
 Action for the process parent.
-Action for the process parent.
-Action for the process parent.
-PID: 1893278
-PID: 1893277
-PPID: 1893276
-UID: 2423
-PPID: 1893273
-GID: 2425
+PPID: 58149
 UID: 2423
 GID: 2425
-PID: 1893280
-PPID: 1893276
-PID: 1893279
-UID: 2423
-GID: 2425
-PPID: 1893273
+PID: 58155
+PPID: 58152
 UID: 2423
 GID: 2425
 Action for the process parent.
+PID: 58154
+PPID: 58149
 Action for the process parent.
-PID: 1893283
-PPID: 1893278
 UID: 2423
 GID: 2425
-PID: 1893284
-PPID: 1893277
+PID: 58158
+PPID: 58153
 UID: 2423
 GID: 2425
-program1_2(1893273)-+-program1_2(1893276)-+-program1_2(1893278)-+-program1_2(18+
-                   |                     |                     `-sh(1893288)--+
-                   |                     |-program1_2(1893280)---sh(1893285)--+
-                   |                     `-sh(1893282)---pstree(1893292)
-                   |-program1_2(1893277)-+-program1_2(1893284)---sh(1893290)--+
-                   |                     `-sh(1893287)---pstree(1893297)
-                   |-program1_2(1893279)---sh(1893286)---pstree(1893293)
-                   `-sh(1893281)---pstree(1893291)
+PID: 58157
+PPID: 58152
+UID: 2423
+Action for the process parent.
+GID: 2425
+PID: 58159
+PPID: 58155
+UID: 2423
+GID: 2425
+program1_2(58149)-+-program1_2(58152)-+-program1_2(58155)---program1_2(58159)
+                  |                   `-program1_2(58157)
+                  |-program1_2(58153)---program1_2(58158)
+                  |-program1_2(58154)
+                  `-sh(58156)---pstree(58160)
 ```
      
    - **program1_3** - Creates three child processes using the `fork()` function, which then execute another program `./program1_1` using the `execl()` function, and the parent process waits for each of the child                            processes to finish and displays their exit codes.
