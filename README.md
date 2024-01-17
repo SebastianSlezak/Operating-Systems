@@ -188,30 +188,46 @@ blank message sent 6
 blank message sent 7
 blank message sent 8
 blank message sent 9
-PID=2219869 has been written to the buffer [PRODUCER]
-PID=2219871 has been written to the buffer [PRODUCER]
-PID=2219870 has been written to the buffer [PRODUCER]
-PID=2219873 has been written to the buffer [PRODUCER]
-PID=2219872 has been written to the buffer [PRODUCER]
-PID=2219874 has been written to the buffer [PRODUCER]
-PID=2219875 has been written to the buffer [PRODUCER]
-PID=2219876 has been written to the buffer [PRODUCER]
-PID=2219877 has been written to the buffer [PRODUCER]
-PID=2219878 has been written to the buffer [PRODUCER]
-PID=2219880 has been written to the buffer [PRODUCER]
-PID=2219879 has been written to the buffer [PRODUCER]
-Process 2219881 has gained access to the semaphore set [CONSUMER]
-Process 2219882 has gained access to the semaphore set [CONSUMER]
-Process 2219883 has gained access to the semaphore set [CONSUMER]
-Process 2219884 has gained access to the semaphore set [CONSUMER]
-Process 2219885 has gained access to the semaphore set [CONSUMER]
-Process 2219886 has gained access to the semaphore set [CONSUMER]
-Process 2219887 has gained access to the semaphore set [CONSUMER]
-Process 2219888 has gained access to the semaphore set [CONSUMER]
-Process 2219889 has gained access to the semaphore set [CONSUMER]
-Process 2219890 has gained access to the semaphore set [CONSUMER]
-Process 2219891 has gained access to the semaphore set [CONSUMER]
-Process 2219892 has gained access to the semaphore set [CONSUMER]
+PID=2421967:saved under buffer 0 : 2421967
+PID=2421969:saved under buffer 1 : 2421969
+PID=2421975:saved under buffer 2 : 2421975
+PID=2421971:saved under buffer 3 : 2421971
+PID=2421973:saved under buffer 4 : 2421973
+PID=2421977:saved under buffer 5 : 2421977
+PID=2421979:saved under buffer 6 : 2421979
+PID=2421981:saved under buffer 7 : 2421981
+PID=2421983:saved under buffer 8 : 2421983
+PID=2421985:saved under buffer 9 : 2421985
+consumer--------------------------------
+received a FULL message
+consumer--------------------------------
+consumer--------------------------------
+received a FULL message
+received a FULL message
+consumer--------------------------------
+received a FULL message
+consumer--------------------------------
+received a FULL message
+consumer--------------------------------
+received a FULL message
+consumer--------------------------------
+received a FULL message
+consumer--------------------------------
+received a FULL message
+consumer--------------------------------
+received a FULL message
+consumer--------------------------------
+received a FULL message
+consumer 2421968 - read from buffer 0: 2421967
+consumer 2421972 - read from buffer 1: 2421969
+consumer 2421970 - read from buffer 2: 2421975
+consumer 2421978 - read from buffer 3: 2421971
+consumer 2421974 - read from buffer 4: 2421973
+consumer 2421980 - read from buffer 5: 2421977
+consumer 2421976 - read from buffer 6: 2421979
+consumer 2421982 - read from buffer 7: 2421981
+consumer 2421984 - read from buffer 8: 2421983
+consumer 2421986 - read from buffer 9: 2421985
 ```
 
 <a name="project4"></a>
