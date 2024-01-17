@@ -1,154 +1,101 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
 #include <unistd.h>
 #include <sys/ipc.h>
+#include <sys/msg.h>
+#include <sys/shm.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include <sys/sem.h>
-#include <sys/wait.h>
-#include <errno.h>
 
-static void leaveSemaphore(int, short);
-static void raiseSemaphore(int, short);
+struct buffer
+{
+    long mtype;
+    int mvalue;
+};
+
+int *mem;
+
+#define MAX2 12
+#define MAX 10
+#define FULL 2
+#define EMPTY 1
+#define record mem[MAX + 1]
+#define read mem[MAX]
 
 int main()
 {
-    key_t key;
-    if (!(key = ftok(".", 'F')))
-    {
-        printf("Key creation error [CONSUMER]");
-        exit(-2);
-    }
+    key_t key, keym, keys;
+    int msgID, shmID, semID;
+    int i;
+    int value;
+    struct buffer message;
+    sleep(1);
+    printf("consumer--------------------------------\n");
 
-    int semaphoreId;
-    if ((semaphoreId = semget(key, 4, 0600 | IPC_CREAT)) == -1)
+    if ((key = ftok(".", 'A')) == -1)
     {
-        printf("Error accessing semaphore set [CONSUMER]\n");
-        exit(-3);
-    }
-    else
-        printf("Process %d has gained access to the semaphore set [CONSUMER]\n", getpid());
+        printf("Error ftok (A)\n");
+        exit(2);
+    };
 
-    FILE *output, *buffer;
-    if ((output = fopen("output", "w")) == NULL)
+    msgID = msgget(key, IPC_CREAT | 0666);
+    if (msgID == -1)
     {
-        printf("Can't open file output to save! [CONSUMER]\n");
+        printf("message queue error\n");
+        exit(1);
+    };
+
+    keym = ftok(".", 'B');
+    keys = ftok(".", 'X');
+
+    shmID = shmget(keym, MAX2 * sizeof(int), IPC_CREAT | 0666);
+
+    mem = (int *)shmat(shmID, NULL, 0);
+
+    if (*mem == -1)
+        printf("memory problem\n");
+
+    if (msgrcv(msgID, &message, sizeof(message.mvalue), FULL, 0) == -1)
+    {
+        printf("error receiving full message\n");
         exit(1);
     }
+    printf("received a FULL message\n");
+    sleep(1);
 
-    if (semctl(semaphoreId, 2, SETVAL, 1) == -1)
+    if ((semID = semget(keys, 1, IPC_CREAT | 0666)) == -1)
     {
-        printf("Sem initiation error [CONSUMER]\n");
-        exit(-1);
+        perror("consumer - semaphore error: ");
+        exit(1);
+    };
+
+    struct sembuf operations;
+    operations.sem_num = 0;
+    operations.sem_op = -1;
+    operations.sem_flg = SEM_UNDO;
+
+    if (semop(semID, &operations, 1) == -1)
+    {
+        printf("consumer - semaphore wait error\n");
+        perror("error wait");
     }
 
-    char token;
-    int flag;
+    fprintf(stderr, "consumer %d - read from buffer %d: %d\n", getpid(), read, mem[read]);
 
-    if ((flag = semctl(semaphoreId, 2, GETVAL, NULL)) < 0)
+    read = (read + 1) % MAX;
+
+    operations.sem_op = 1;
+
+    if (semop(semID, &operations, 1) == -1)
     {
-        printf("Error retrieving semaphore value [CONSUMER]\n");
-        exit(-7);
+        printf("consumer - semaphore signal error\n");
+        perror("error signal");
     }
 
-    while (flag > 0)
+    message.mtype = EMPTY;
+    if (msgsnd(msgID, &message, sizeof(message.mvalue), 0) == -1)
     {
-        leaveSemaphore(semaphoreId, 1);
-        if ((buffer = fopen("buffer", "r")) == NULL)
-        {
-            printf("Cannot open read buffer file [CONSUMER]\n");
-            exit(1);
-        }
-        if ((token = fgetc(buffer)) != EOF)
-        {
-            if (ferror(buffer) == EOF)
-            {
-                printf("Error reading character [CONSUMER]\n");
-                exit(-9);
-            }
-            printf("Character read: %c [CONSUMER]\n", token);
-            fputc(token, output);
-        }
-
-        if (ferror(output) == EOF)
-        {
-            printf("Error writing character to buffer [CONSUMER]\n");
-            exit(-9);
-        }
-        if (fclose(buffer) == EOF)
-        {
-            printf("Error closing buffer [CONSUMER]\n");
-            exit(-1);
-        }
-
-        raiseSemaphore(semaphoreId, 0);
-        if ((flag = semctl(semaphoreId, 2, GETVAL, NULL)) < 0)
-        {
-            printf("Error retrieving semaphore value [CONSUMER]\n");
-            exit(-7);
-        }
+        printf("error sending empty message\n");
+        exit(1);
     }
-
-    if (fclose(output) == EOF)
-    {
-        printf("Exit Closure Error [CONSUMER]\n");
-        exit(-1);
-    }
-
-    raiseSemaphore(semaphoreId, 3);
-
-    return 0;
-}
-
-static void leaveSemaphore(int semaphoreId, short semaphoreNumber)
-{
-    int changeSemaphore;
-    struct sembuf buffer_sem;
-    buffer_sem.sem_num = semaphoreNumber;
-    buffer_sem.sem_op = -1;
-    buffer_sem.sem_flg = 0;
-
-    while (1)
-    {
-        changeSemaphore = semop(semaphoreId, &buffer_sem, 1);
-        if (changeSemaphore == 0 || errno != 4)
-            break;
-    }
-
-    if (changeSemaphore == -1)
-    {
-        if (errno != 4)
-        {
-            perror("Error lowering semaphore [CONSUMER]\n");
-            exit(-5);
-        }
-    }
-    else
-        printf("Semaphore %d has been lowered [CONSUMER]\n", semaphoreNumber);
-}
-
-static void raiseSemaphore(int semaphoreId, short semaphoreNumber)
-{
-    int changeSemaphore;
-    struct sembuf bufor_sem;
-    bufor_sem.sem_num = semaphoreNumber;
-    bufor_sem.sem_op = 1;
-    bufor_sem.sem_flg = 0;
-
-    while (1)
-    {
-        changeSemaphore = semop(semaphoreId, &bufor_sem, 1);
-        if (changeSemaphore == 0 || errno != 4) 
-            break;
-    }
-
-    if (changeSemaphore == -1)
-    {
-        if (errno != 4)
-        {
-            perror("Semaphore lift error [CONSUMER]\n");
-            exit(-5);
-        }
-    }
-    else
-        printf("Semaphore %d raised [CONSUMER]\n", semaphoreNumber);
 }
