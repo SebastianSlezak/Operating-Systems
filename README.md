@@ -18,7 +18,7 @@ In this repository you will find various projects focused on showing how my know
 ## Projects
 
 <a name="project1"></a>
-### 1. [Project 1 - Dynamic Process Tree Creation with Error Handling](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%201%20-%20Dynamic%20Process%20Tree%20Creation%20with%20Error%20Handling)
+### [Project 1 - Dynamic Process Tree Creation with Error Handling](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%201%20-%20Dynamic%20Process%20Tree%20Creation%20with%20Error%20Handling)
    Description: This project includes analyzing descendant processes, drawing a family tree, running new programs in descendant processes, handling errors, and waiting for all descendant processes to finish.
 
    - **program1_1** - Displays process IDs: PID (Process ID), PPID (Parent Process ID), UID (User ID) and GID (Group ID).
@@ -108,7 +108,7 @@ The process 1893379 ended with: 0
 ```
 
 <a name="project2"></a>
-### 2. [Project 2 - Thread and Semaphore Synchronization](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%202%20-%20Thread%20and%20Semaphore%20Synchronization)
+### [Project 2 - Thread and Semaphore Synchronization](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%202%20-%20Thread%20and%20Semaphore%20Synchronization)
    Description: The project uses threads to calculate the sum of elements in a two-dimensional array and synchronize three processes using semaphores, with each process displaying and storing specific information    and then terminating with the `sleep(1)` function, using the `fork()` and `exec()` functions.
 
    - **program2_1** - The program creates a two-dimensional array of random numbers and then uses two threads to calculate the sum of the elements in each row, after which it sums these partial totals and                               displays the results.
@@ -169,7 +169,7 @@ Section t32 with PID = 1893450
 Section t33 with PID = 1893450
 ```
 <a name="project3"></a>
-### 3. [Project 3 - Consumer Manufacturer](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%203%20-%20Consumer%20Manufacturer))
+### [Project 3 - Consumer Manufacturer](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%203%20-%20Consumer%20Manufacturer))
    Description: The classic Producer-Consumer problem is an IT synchronization problem in which two types of processes, the producer and the consumer, share a common resource - a buffer - for the units produced (and consumed), and the producer's task is to produce a product, place it in the buffer and start again, and the consumer's task is to retrieve the product from the buffer.
 
    - **mainp** - It implements the producer-consumer problem by creating producer and consumer processes that communicate using shared memory, semaphores and message queues.
@@ -240,7 +240,7 @@ Section t33 with PID = 1893450
 ```
 
 <a name="project4"></a>
-### 4. [Project 4 - Client Server](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%204%20-%20Client%20Server)
+### [Project 4 - Client Server](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%204%20-%20Client%20Server)
 
 Description: A client-server program is a computer system architecture that allows the division of tasks, where the server provides services to clients who submit service requests to it.
 
