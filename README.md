@@ -78,7 +78,7 @@ program1_2(58149)-+-program1_2(58152)-+-program1_2(58155)---program1_2(58159)
                   `-sh(58156)---pstree(58160)
 ```
      
-   - **program1_3** - Creates three child processes using the `fork()` function, which then execute another program `./program1_1` using the `execl()` function, and the parent process waits for each of the child                            processes to finish and displays their exit codes.
+   - **program1_3** - Creates three child processes using the `fork()` function, which then execute another program `./program1_1` using the `execl()` function, and the parent process waits for each of the child                            processes to finish and display their exit codes.
      
 #### Result of the program
 ```
