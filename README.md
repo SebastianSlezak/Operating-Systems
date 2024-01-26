@@ -173,61 +173,70 @@ Section t33 with PID = 1893450
    Description: The classic Producer-Consumer problem is an IT synchronization problem in which two types of processes, the producer and the consumer, share a common resource - a buffer - for the units produced (and consumed), and the producer's task is to produce a product, place it in the buffer and start again, and the consumer's task is to retrieve the product from the buffer.
 
    - **mainp** - It implements the producer-consumer problem by creating producer and consumer processes that communicate using shared memory, semaphores and message queues.
-   - **kons** - The consumer program in the producer-consumer problem, using semaphores for synchronization and buffer handling.
+   - **cons** - The consumer program in the producer-consumer problem, using semaphores for synchronization and buffer handling.
    - **prod** - program acts as a producer in the producer-consumer problem, using semaphores for synchronization and buffer handling.
 
 #### Result of the program
 ```
-blank message sent 0
-blank message sent 1
-blank message sent 2
-blank message sent 3
-blank message sent 4
-blank message sent 5
-blank message sent 6
-blank message sent 7
-blank message sent 8
-blank message sent 9
-PID=2421967:saved under buffer 0 : 2421967
-PID=2421969:saved under buffer 1 : 2421969
-PID=2421975:saved under buffer 2 : 2421975
-PID=2421971:saved under buffer 3 : 2421971
-PID=2421973:saved under buffer 4 : 2421973
-PID=2421977:saved under buffer 5 : 2421977
-PID=2421979:saved under buffer 6 : 2421979
-PID=2421981:saved under buffer 7 : 2421981
-PID=2421983:saved under buffer 8 : 2421983
-PID=2421985:saved under buffer 9 : 2421985
-consumer--------------------------------
-received a FULL message
-consumer--------------------------------
-consumer--------------------------------
-received a FULL message
-received a FULL message
-consumer--------------------------------
-received a FULL message
-consumer--------------------------------
-received a FULL message
-consumer--------------------------------
-received a FULL message
-consumer--------------------------------
-received a FULL message
-consumer--------------------------------
-received a FULL message
-consumer--------------------------------
-received a FULL message
-consumer--------------------------------
-received a FULL message
-consumer 2421968 - read from buffer 0: 2421967
-consumer 2421972 - read from buffer 1: 2421969
-consumer 2421970 - read from buffer 2: 2421975
-consumer 2421978 - read from buffer 3: 2421971
-consumer 2421974 - read from buffer 4: 2421973
-consumer 2421980 - read from buffer 5: 2421977
-consumer 2421976 - read from buffer 6: 2421979
-consumer 2421982 - read from buffer 7: 2421981
-consumer 2421984 - read from buffer 8: 2421983
-consumer 2421986 - read from buffer 9: 2421985
+[MAIN] sent EMPTY message 0
+[MAIN] sent EMPTY message 1
+[MAIN] sent EMPTY message 2
+[MAIN] sent EMPTY message 3
+[MAIN] sent EMPTY message 4
+[MAIN] sent EMPTY message 5
+[MAIN] sent EMPTY message 6
+[MAIN] sent EMPTY message 7
+[MAIN] sent EMPTY message 8
+[MAIN] sent EMPTY message 9
+[PROD 702923] received message EMPTY
+[PROD 702924] received message EMPTY
+[PROD 702927] received message EMPTY
+[PROD 702925] received message EMPTY
+[PROD 702926] received message EMPTY
+[PROD 702928] received message EMPTY
+[PROD 702929] received message EMPTY
+[PROD 702934] received message EMPTY
+[PROD 702930] received message EMPTY
+[PROD 702930] -> saved under buffer 0 : 702930
+[PROD 702931] received message EMPTY
+[CONS 702935] picked up message FULL
+[PROD 702931] -> saved under buffer 1 : 702931
+[CONS 702936] picked up message FULL
+[PROD 702923] -> saved under buffer 2 : 702923
+[CONS 702937] picked up message FULL
+[CONS 702935] <- read from the buffer 0: 702930
+[PROD 702932] received message EMPTY
+[PROD 702924] -> saved under buffer 3 : 702924
+[CONS 702938] picked up message FULL
+[PROD 702934] -> saved under buffer 4 : 702934
+[CONS 702940] picked up message FULL
+[CONS 702940] <- read from the buffer 1: 702931
+[PROD 702933] received message EMPTY
+[CONS 702936] <- read from the buffer 2: 702923
+[PROD 702925] -> saved under buffer 5 : 702925
+[CONS 702939] picked up message FULL
+[PROD 702932] -> saved under buffer 6 : 702932
+[CONS 702941] picked up message FULL
+[PROD 702926] -> saved under buffer 7 : 702926
+[CONS 702942] picked up message FULL
+[CONS 702941] <- read from the buffer 3: 702924
+[PROD 702927] -> saved under buffer 8 : 702927
+[CONS 702943] picked up message FULL
+[CONS 702937] <- read from the buffer 4: 702934
+[CONS 702942] <- read from the buffer 5: 702925
+[PROD 702933] -> saved under buffer 9 : 702933
+[CONS 702944] picked up message FULL
+[PROD 702928] -> saved under buffer 0 : 702928
+[CONS 702945] picked up message FULL
+[CONS 702938] <- read from the buffer 6: 702932
+[PROD 702929] -> saved under buffer 1 : 702929
+[CONS 702946] picked up message FULL
+[CONS 702943] <- read from the buffer 7: 702926
+[CONS 702939] <- read from the buffer 8: 702927
+[CONS 702944] <- read from the buffer 9: 702933
+[CONS 702945] <- read from the buffer 0: 702928
+[CONS 702946] <- read from the buffer 1: 702929
+[MAIN] End.
 ```
 
 <a name="project4"></a>

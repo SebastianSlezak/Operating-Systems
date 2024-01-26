@@ -7,81 +7,93 @@
 #include <time.h>
 #include <sys/sem.h>
 
-struct buffer
-{
-    int mtype;
-    int mvalue;
+struct buffer{
+        int mtype;
+        int mvalue;
 };
 
-int *mem;
+int *memory;
 
 #define MAX 10
 #define MAX2 12
 #define FULL 2
 #define EMPTY 1
-#define read mem[MAX]
-#define record mem[MAX + 1]
-
+#define record memory[MAX]
+#define read memory[MAX+1]
 int main()
 {
-    key_t key, keym, keys;
-    int msgID, semID, shmID;
-    struct buffer message;
+        key_t key, keym,keys;
+        int msgID;
+        int shmID, semID;
+        int i;
+        struct buffer message;
 
-    if ((key = ftok(".", 'A')) == -1)
-    {
-        printf("Error ftok (A)\n");
-        exit(2);
-    };
+        if ( (key = ftok(".", 'A')) == -1 )
+        {
+                printf("[PROD %d] error ftok key\n", getpid());
+                exit(2);
+        }
 
-    msgID = msgget(key, IPC_CREAT | 0666);
-    if (msgID == -1)
-    {
-        printf("message queue error\n");
-        exit(1);
-    }
+        msgID=msgget(key, IPC_CREAT | 0666);
+        if (msgID == -1)
+        {
+                printf("[PROD %d] error message queues\n", getpid());
+                exit(1);
+        }
 
-    keym = ftok(".", 'B');
-    keys = ftok(".", 'X');
+        keym= ftok(".", 'B'); 
+        keys= ftok(".", 'C'); 
 
-    shmID = shmget(keym, MAX2 * sizeof(int), IPC_CREAT | 0666);
+        shmID=shmget(keym, MAX2*sizeof(int),IPC_CREAT|0666);
+        if(shmID == -1)
+        {
+                printf("[PROD %d] error memories\n", getpid());
+        }
 
-    mem = (int *)shmat(shmID, NULL, 0);
+        memory=(int*)shmat(shmID, NULL, 0);
 
-    if (msgrcv(msgID, &message, sizeof(message.mvalue), EMPTY, 0) == -1)
-    {
-    }
+        if (msgrcv(msgID,&message,sizeof(message.mvalue),EMPTY,0)==-1)
+        {
+                printf("[PROD %d] error receipt of the message EMPTY\n", getpid());
+        }
+        else
+        {
+                printf("[PROD %d] received message EMPTY\n", getpid());
+        }
 
-    semID = semget(keys, 1, IPC_CREAT | 0666);
+        semID=semget(keys,2,IPC_CREAT|0666);
+        if(semID == -1)
+        {
+                printf("[PROD %d] error semaphore\n", getpid());
+        }
 
-    int value = semctl(semID, 0, GETVAL, 0);
+        sleep((getpid()%10)*2);
 
-    struct sembuf operations;
-    operations.sem_num = 0;
-    operations.sem_op = -1;
-    operations.sem_flg = 0;
+        struct sembuf operations;
+        operations.sem_num=0;
+        operations.sem_op= -1;
+        operations.sem_flg=0;
 
-    if (semop(semID, &operations, 1) == -1)
-        printf("producer wait blad\n");
+        if(semop(semID,&operations, 1)==-1)
+        {
+                printf("[PROD %d] error semop -1\n", getpid());
+        }
 
-    mem[record] = getpid();
+        memory[record]=getpid();
 
-    printf("PID=%d:saved under buffer %d : %d\n", getpid(), record, mem[record]);
+        printf("[PROD %d] -> saved under buffer %d : %d\n", getpid(),record, memory[record]);
+        record=(record+1)%MAX;
 
-    record = (record + 1) % MAX;
+        operations.sem_op=1;
 
-    operations.sem_op = 1;
+        if(semop(semID,&operations,1)==-1)
+        {
+                printf("[PROD %d] error semop 1", getpid());
+        }
 
-    if (semop(semID, &operations, 1) == -1)
-    {
-        printf("producer signal error\n");
-    };
-
-    value = semctl(semID, 0, GETVAL, 0);
-
-    message.mtype = FULL;
-
-    if (msgsnd(msgID, &message, sizeof(message.mvalue), 0) == -1)
-    {
-    }
+        message.mtype=FULL;
+        if (msgsnd(msgID,&message,sizeof(message.mvalue), 0)==-1)
+        {
+                printf("[PROD %d] error sending a message FULL\n");
+        }
 }
