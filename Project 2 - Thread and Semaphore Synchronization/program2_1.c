@@ -8,17 +8,20 @@
 
 int tab[ROWS][COLUMNS];
 
-typedef struct {
+typedef struct
+{
     int row;
     int result;
 } ThreadData;
 
-void *calculateRowSum (void *data){
+void *calculateRowSum(void *data)
+{
     ThreadData *threadData = (ThreadData *)data;
     int row = threadData->row;
     int sum = 0;
 
-    for (int i = 0; i < COLUMNS; ++i) {
+    for (int i = 0; i < COLUMNS; ++i)
+    {
         sum += tab[row][i];
     }
 
@@ -26,12 +29,15 @@ void *calculateRowSum (void *data){
     pthread_exit(NULL);
 };
 
-int main() {
+int main()
+{
     time_t t;
-    srand((unsigned) time(&t));
+    srand((unsigned)time(&t));
 
-    for (int i = 0; i < ROWS; ++i) {
-        for (int j = 0; j < COLUMNS; ++j) {
+    for (int i = 0; i < ROWS; ++i)
+    {
+        for (int j = 0; j < COLUMNS; ++j)
+        {
             tab[i][j] = rand() % 10;
         }
     }

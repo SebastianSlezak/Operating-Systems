@@ -8,53 +8,66 @@
 key_t key;
 int semaphore;
 
-void end(const char *errMsg) {
+void end(const char *errMsg)
+{
     perror(errMsg);
     exit(EXIT_FAILURE);
 }
 
-void createNewSemaphore(key_t key) {
-    if ((semaphore = semget(key, 5, 0666 | IPC_CREAT)) == -1) {
+void createNewSemaphore(key_t key)
+{
+    if ((semaphore = semget(key, 5, 0666 | IPC_CREAT)) == -1)
+    {
         end("[P3] Error when creating a new semaphore\n");
-    } else {
+    }
+    else
+    {
         printf("[P3] The semaphore has been created: %d\n", semaphore);
     }
 }
 
-void semaphoreP(int x) {
+void semaphoreP(int x)
+{
     struct sembuf bufor_sem;
     bufor_sem.sem_num = x;
     bufor_sem.sem_op = -1;
     bufor_sem.sem_flg = SEM_UNDO;
 
-    if ((semop(semaphore, &bufor_sem, 1)) == -1) {
+    if ((semop(semaphore, &bufor_sem, 1)) == -1)
+    {
         end("[P3] Error when closing semaphore\n");
-    } else {
+    }
+    else
+    {
         printf("[P3] Semaphore %d has been closed\n", x);
     }
 }
 
-void semaphoreV(int x) {
+void semaphoreV(int x)
+{
     struct sembuf bufor_sem;
     bufor_sem.sem_num = x;
     bufor_sem.sem_op = 1;
     bufor_sem.sem_flg = SEM_UNDO;
 
-    if ((semop(semaphore, &bufor_sem, 1)) == -1) {
+    if ((semop(semaphore, &bufor_sem, 1)) == -1)
+    {
         end("[P3] Error when opening semaphore\n");
     }
     printf("[P3] Semaphore %d has been opened\n", x);
 }
 
-int main() {
-    if ((key = ftok(".", 'T')) == -1) {
+int main()
+{
+    if ((key = ftok(".", 'T')) == -1)
+    {
         end("[P3] Key creation error\n");
     }
 
     createNewSemaphore(key);
 
     FILE *file = fopen("wynik.txt", "a");
-    //p(s0) t31 t32 v(s1) p(s4) t33
+    // p(s0) t31 t32 v(s1) p(s4) t33
     semaphoreP(0);
 
     printf("Section t31 with PID = %d\n", getpid());

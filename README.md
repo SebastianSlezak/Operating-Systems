@@ -18,22 +18,26 @@ In this repository you will find various projects focused on showing how my know
 ## Projects
 
 <a name="project1"></a>
-### [Project 1 - Dynamic Process Tree Creation with Error Handling](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%201%20-%20Dynamic%20Process%20Tree%20Creation%20with%20Error%20Handling)
-   Description: This project includes analyzing descendant processes, drawing a family tree, running new programs in descendant processes, handling errors, and waiting for all descendant processes to finish.
 
-   - **program1_1** - Displays process IDs: PID (Process ID), PPID (Parent Process ID), UID (User ID) and GID (Group ID).
-     
+### [Project 1 - Dynamic Process Tree Creation with Error Handling](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%201%20-%20Dynamic%20Process%20Tree%20Creation%20with%20Error%20Handling)
+
+Description: This project includes analyzing descendant processes, drawing a family tree, running new programs in descendant processes, handling errors, and waiting for all descendant processes to finish.
+
+- **program1_1** - Displays process IDs: PID (Process ID), PPID (Parent Process ID), UID (User ID) and GID (Group ID).
+
 #### Result of the program
+
 ```
 PID: 1728792
 PPID: 1728727
 UID: 2423
 GID: 2425
 ```
-     
-   - **program1_2** - Creates three child processes using the fork() function, displays their PID, PPID, UID, GID, as well as the process tree before and after the creation of the child processes.
-     
+
+- **program1_2** - Creates three child processes using the fork() function, displays their PID, PPID, UID, GID, as well as the process tree before and after the creation of the child processes.
+
 #### Result of the program
+
 ```
 program1_2(58149)---sh(58150)---pstree(58151)
 Action for the process parent.
@@ -77,10 +81,11 @@ program1_2(58149)-+-program1_2(58152)-+-program1_2(58155)---program1_2(58159)
                   |-program1_2(58154)
                   `-sh(58156)---pstree(58160)
 ```
-     
-   - **program1_3** - Creates three child processes using the `fork()` function, which then execute another program `./program1_1` using the `execl()` function, and the parent process waits for each of the child                            processes to finish and display their exit codes.
-     
+
+- **program1_3** - Creates three child processes using the `fork()` function, which then execute another program `./program1_1` using the `execl()` function, and the parent process waits for each of the child processes to finish and display their exit codes.
+
 #### Result of the program
+
 ```
 program1_3(1893374)---sh(1893375)---pstree(1893376)
 Action for the process parent.
@@ -108,24 +113,28 @@ The process 1893379 ended with: 0
 ```
 
 <a name="project2"></a>
-### [Project 2 - Thread and Semaphore Synchronization](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%202%20-%20Thread%20and%20Semaphore%20Synchronization)
-   Description: The project uses threads to calculate the sum of elements in a two-dimensional array and synchronize three processes using semaphores, with each process displaying and storing specific information and then terminating with the `sleep(1)` function, using the `fork()` and `exec()` functions.
 
-   - **program2_1** - The program creates a two-dimensional array of random numbers and then uses two threads to calculate the sum of the elements in each row, after which it sums these partial totals and                               displays the results.
+### [Project 2 - Thread and Semaphore Synchronization](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%202%20-%20Thread%20and%20Semaphore%20Synchronization)
+
+Description: The project uses threads to calculate the sum of elements in a two-dimensional array and synchronize three processes using semaphores, with each process displaying and storing specific information and then terminating with the `sleep(1)` function, using the `fork()` and `exec()` functions.
+
+- **program2_1** - The program creates a two-dimensional array of random numbers and then uses two threads to calculate the sum of the elements in each row, after which it sums these partial totals and displays the results.
 
 #### Result of the program
+
 ```
 Sum of the elements of the first row: 45
 Sum of the elements of the second row: 36
 Total sum: 81
 ```
 
-   - **semaphore** - This program creates a semaphore, sets it, generates child processes using the `fork()` and `exec()` functions, waits for those processes to finish, and then deletes the semaphore while saving the results to the "wynik.txt" file.
-      - **program2_2** - It creates a semaphore, closes it, displays and saves the PID information for two sections, and then opens the semaphore and terminates the operation.
-      - **program2_3** - It creates a semaphore and then executes three sections of code `(t21, t22, t23)`, each writing information to a file and manipulating the semaphore to control the order in which the                                 sections are executed.
-      - **program2_4** - It creates a semaphore and then executes three sections of code `(t31, t32, t33)`, each writing information to a file and manipulating the semaphore to control the order in which the                                 sections are executed.
+- **semaphore** - This program creates a semaphore, sets it, generates child processes using the `fork()` and `exec()` functions, waits for those processes to finish, and then deletes the semaphore while saving the results to the "wynik.txt" file.
+  - **program2_2** - It creates a semaphore, closes it, displays and saves the PID information for two sections, and then opens the semaphore and terminates the operation.
+  - **program2_3** - It creates a semaphore and then executes three sections of code `(t21, t22, t23)`, each writing information to a file and manipulating the semaphore to control the order in which the sections are executed.
+  - **program2_4** - It creates a semaphore and then executes three sections of code `(t31, t32, t33)`, each writing information to a file and manipulating the semaphore to control the order in which the sections are executed.
 
 #### Result of the program
+
 ```
 [MAIN] The semaphore has been created: 1441844
 [MAIN] The semaphore has been set
@@ -157,6 +166,7 @@ The process 1893450 ended with: 1
 ```
 
 #### wynik.txt
+
 ```
 Section t11 with PID = 1893444
 Section t12 with PID = 1893444
@@ -167,15 +177,19 @@ Section t31 with PID = 1893450
 Section t32 with PID = 1893450
 Section t33 with PID = 1893450
 ```
-<a name="project3"></a>
-### [Project 3 - Consumer Manufacturer](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%203%20-%20Consumer%20Manufacturer))
-   Description: The classic Producer-Consumer problem is an IT synchronization problem in which two types of processes, the producer and the consumer, share a common resource - a buffer - for the units produced (and consumed), and the producer's task is to produce a product, place it in the buffer and start again, and the consumer's task is to retrieve the product from the buffer.
 
-   - **mainp** - It implements the producer-consumer problem by creating producer and consumer processes that communicate using shared memory, semaphores and message queues.
-   - **cons** - The consumer program in the producer-consumer problem, using semaphores for synchronization and buffer handling.
-   - **prod** - program acts as a producer in the producer-consumer problem, using semaphores for synchronization and buffer handling.
+<a name="project3"></a>
+
+### [Project 3 - Consumer Manufacturer](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%203%20-%20Consumer%20Manufacturer))
+
+Description: The classic Producer-Consumer problem is an IT synchronization problem in which two types of processes, the producer and the consumer, share a common resource - a buffer - for the units produced (and consumed), and the producer's task is to produce a product, place it in the buffer and start again, and the consumer's task is to retrieve the product from the buffer.
+
+- **mainp** - It implements the producer-consumer problem by creating producer and consumer processes that communicate using shared memory, semaphores and message queues.
+- **cons** - The consumer program in the producer-consumer problem, using semaphores for synchronization and buffer handling.
+- **prod** - program acts as a producer in the producer-consumer problem, using semaphores for synchronization and buffer handling.
 
 #### Result of the program
+
 ```
 [MAIN] sent EMPTY message 0
 [MAIN] sent EMPTY message 1
@@ -239,14 +253,16 @@ Section t33 with PID = 1893450
 ```
 
 <a name="project4"></a>
+
 ### [Project 4 - Client Server](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%204%20-%20Client%20Server)
 
 Description: A client-server program is a computer system architecture that allows the division of tasks, where the server provides services to clients who submit service requests to it.
 
-   - **client** - This code is responsible for communicating with the server using message queues in Unix, which sends messages to the server and receives responses.
-   - **server** - This code is a simple server program communicating with a client using Unix message queues, which receives messages from the client, converts them to uppercase and sends them back.
+- **client** - This code is responsible for communicating with the server using message queues in Unix, which sends messages to the server and receives responses.
+- **server** - This code is a simple server program communicating with a client using Unix message queues, which receives messages from the client, converts them to uppercase and sends them back.
 
 #### Result of client
+
 ```
 C[3582514]: Enter text to send:
 test message
@@ -256,6 +272,7 @@ C[3582514]: Enter text to send:
 ```
 
 #### Result of server
+
 ```
 ^C terminates server
 S: I look forward to the message...
@@ -264,5 +281,6 @@ S: Sending... TEST MESSAGE -> 3582514
 S: I look forward to the message...
 ```
 
-* * *
+---
+
 Feel free to explore each project's directory for more details.

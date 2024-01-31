@@ -19,9 +19,9 @@ int main(int argc, char *argv[])
 {
     int customerNumber, tem, i;
     char tmptxt[10], message[80];
-    key_t key;            
-    int queueId;        
-    struct message mes; 
+    key_t key;
+    int queueId;
+    struct message mes;
     customerNumber = getpid();
 
     key = ftok(".", 33);
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     while (1)
     {
 
-        mes.mtype = SERVER; 
+        mes.mtype = SERVER;
         sprintf(tmptxt, "%d~", getpid());
         strcpy(mes.mtext, tmptxt);
         printf("C[%d]: Enter text to send:\n", getpid());
@@ -49,10 +49,10 @@ int main(int argc, char *argv[])
             }
             i++;
         }
-        strcat(mes.mtext, message); 
+        strcat(mes.mtext, message);
         printf("C[%d]: Sending... \"%s\" -> SERVER\n", customerNumber, &mes.mtext[strlen(mes.mtext) - strlen(message)]);
-        msgsnd(queueId, (struct msgbuf *)&mes, strlen(mes.mtext) + 1, 0); 
-        mes.mtype = getpid();                                               
+        msgsnd(queueId, (struct msgbuf *)&mes, strlen(mes.mtext) + 1, 0);
+        mes.mtype = getpid();
         msgrcv(queueId, (struct msgbuf *)&mes, MAX, mes.mtype, 0);
         printf("C[%d]: Retrieved: \"%s\" addressed to %ld\n", customerNumber, mes.mtext, mes.mtype);
     }
