@@ -180,7 +180,7 @@ Section t33 with PID = 1893450
 
 <a name="project3"></a>
 
-### [Project 3 - Consumer Manufacturer](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%203%20-%20Consumer%20Manufacturer))
+### [Project 3 - Consumer Manufacturer](https://github.com/SebastianSlezak/Operating-systems/tree/main/Project%203%20-%20Consumer%20Manufacturer)
 
 Description: The classic Producer-Consumer problem is an IT synchronization problem in which two types of processes, the producer and the consumer, share a common resource - a buffer - for the units produced (and consumed), and the producer's task is to produce a product, place it in the buffer and start again, and the consumer's task is to retrieve the product from the buffer.
 
